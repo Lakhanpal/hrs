@@ -1,0 +1,180 @@
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h1 class="h1">
+                    Job Application Details
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well well-sm">
+                <form [formGroup]="jobProfile">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" class="form-control" formControlName="institutes" placeholder="Enter name"  />
+                        </div>
+
+                        <div class="form-group" >
+                            <label for="expirienceRange">
+                                Exp </label>
+                                  <nouislider style="margin-top: 4em;"
+                                  [config]="rangeSlidConfig" 
+                                [connect]="true" 
+                                [min]="0" 
+                                [max]="100" 
+                                [step]="1"
+                                [formControl]="jobProfile.controls.myRange"
+                              ></nouislider>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="institutes">
+                                Institutes</label>
+                               <ng-multiselect-dropdown
+                                  formControlName="institutes"
+                                  [placeholder]="'institutes'"
+                                  [data]="institutesList"
+                                  [settings]="dropdownSettings"
+                                  (onSelect)="onItemSelect($event)"
+                                  (onSelectAll)="onSelectAll($event)"
+                                >
+                                </ng-multiselect-dropdown>
+                          
+                        </div>
+                            <div class="form-group"> 
+                                <label for="reviewerList"> Job Locations</label>
+                                   <ng-multiselect-dropdown
+                                      formControlName="jobLocations"
+                                      [placeholder]="'Location'"
+                                      [data]="locations"
+                                      [settings]="dropdownSettings"
+                                      (onSelect)="onItemSelect($event)"
+                                      (onSelectAll)="onSelectAll($event)"
+                                    >
+                                    </ng-multiselect-dropdown>
+                            </div>
+                       
+                        <div class="form-group"> 
+                                <label for="reviewerList"> Job Locations</label>
+                                   <ng-multiselect-dropdown
+                                      formControlName="jobLocations"
+                                      [placeholder]="'Location'"
+                                      [data]="locations"
+                                      [settings]="dropdownSettings"
+                                      (onSelect)="onItemSelect($event)"
+                                      (onSelectAll)="onSelectAll($event)"
+                                    >
+                                    </ng-multiselect-dropdown>
+                            
+                       </div>
+
+                        <div class="form-group"> <label for="skills"> skills</label>
+                           <input type="text" class="form-control" formControlName="skills" />
+                        </div>
+
+                        <div class="form-group"> <label for="onlineTestLink"> onlineTestLink</label>
+                           <input type="text" class="form-control" formControlName="onlineTestLink" />
+                        </div>
+
+                        <div class="form-group"> <label for="interviewType"> interview type</label>
+                           <input type="text" class="form-control" formControlName="interviewType" />
+                        </div>
+
+                        <div class="form-group"> <label for="contactPerson"> contactPerson</label>
+                           <input type="text" class="form-control" formControlName="contactPerson" />
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group"> 
+                        <label for="reviewerList"> reviewerList</label>
+                           <ng-multiselect-dropdown
+                              formControlName="reviewerList"
+                              [placeholder]="'Reviews'"
+                              [data]="dropdownList"
+                              [settings]="dropdownSettings"
+                              (onSelect)="onItemSelect($event)"
+                              (onSelectAll)="onSelectAll($event)"
+                            >
+                            </ng-multiselect-dropdown>
+                       </div>
+                        
+
+                        <div class="form-group"> <label for="startDate">startDate</label>
+                           <div class="input-group">
+                              <input class="form-control" placeholder="yyyy-mm-dd"
+                                     name="dp" formControlName="startDate" ngbDatepicker #d="ngbDatepicker">
+                              <div class="input-group-append">
+                                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                              </div>
+                            </div>
+                       </div>
+                       
+                       <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label"> isActive
+                                <input type="checkbox" class="form-check-input" formControlName="isActive" />               
+                            </label>
+                       </div>
+                       
+                       <div class="form-check form-check-inline">
+                         Online Test ?
+                           <input type="checkbox" class="form-check-input" formControlName="isOnlineTest" />
+                           
+                       </div>
+                       </div>
+                        
+                        <div class="form-group"> <label for="linkedInLink"> linkedInLink</label>
+                           <input type="text" class="form-control" formControlName="linkedInLink" />
+                        </div>
+
+                        <div class="form-group"> <label for="domainRequired">domainRequired</label>
+                           <input type="text" class="form-control" formControlName="domainRequired" />
+                       </div>
+                       
+                        
+                       <div class="row form-inline">
+                            <label for="walkInDetails">
+                                    Walk In Details </label>
+                            <div class="form-group col-xs-3" formGroupName="walkInDetails">
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control"  formControlName="date" />
+                                </div>
+                                <br>
+                                
+                                <div class="form-group ">
+                                    
+                                    <input type="text" class="form-control"  formControlName="reportingTime" />
+                                </div>
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <label for="description">
+                                Message</label>
+                            <textarea  class="form-control" formControlName="description" rows="9" cols="25" 
+                                placeholder="description"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Save </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div> from = {{jobProfile.value | json}} </div>
+        <div> from = {{jobProfile.status}} </div>
+        
+                            
+</div>
